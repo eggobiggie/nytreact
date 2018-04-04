@@ -13,7 +13,6 @@ const ArticleSchema = new Schema({
     url: {
         type: String,
         required: true
-    }
     },
     note: {
         type: Schema.Types.ObjectId,

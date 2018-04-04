@@ -24,18 +24,6 @@ class Saved extends Component
                             <RemoveBtn />
                         </ SavedListItem>
                     </ SavedList>
-                    {/* <div className="dummy-article-panel z-depth-2">
-                        <p className="dummy-headline left-align">Things are great in the world<RemoveBtn /></p>
-                        <p className="date-saved left-align">Date Saved: 11/25/15</p>
-                    </div>
-                    <div className="dummy-article-panel z-depth-2">
-                        <p className="dummy-headline left-align">Things are great in the world but let's make a longer headline to see how it looks ok<RemoveBtn /></p>
-                        <p className="date-saved left-align">Date Saved: 11/25/15</p>
-                    </div>
-                    <div className="dummy-article-panel z-depth-2">
-                        <p className="dummy-headline left-align">Things are great in the world<RemoveBtn /></p>
-                        <p className="date-saved left-align">Date Saved: 11/25/15</p>
-                    </div> */}
                 </div>
             </div>
         </div>
