@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import "./Home.css"
+import { Topic, StartYear, EndYear } from "../../components/Search";
 
 // Home - contains all of the JSX to be rendered on the homepage. This component may contain other smaller components or JSX that renders plain HTML elements. This component should be able to query the NYT API for articles. It displays the results from the API search in a rendered list that displays the article title, publication date, and allows the user to visit an article's url or save the article to the MongoDB.
 
 class Home extends Component {
-    
+
     state = {
         articles: [],
         topic: "",
@@ -13,17 +14,17 @@ class Home extends Component {
         endYear: ""
     };
 
-    // componentDidMount() {
-    //     this.loadArticles();
-    // }
+    componentDidMount() {
+        this.loadArticles();
+    }
 
-    // loadArticles = () => {
-    //     API.getArticles()
-    //         .then(res => 
-    //             this.setState({ articles: res.data, title: "", date: "", url:"" })
-    //         )
-    //         .catch(err => console.log(err));
-    // };
+    loadArticles = () => {
+        API.getArticles()
+            .then(res =>
+                this.setState({ articles: res.data, topic: "", startYear: "", endYear: "" })
+            )
+            .catch(err => console.log(err));
+    };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -34,12 +35,11 @@ class Home extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        if (this.state.topic && this.state.startYear && this.state.endYear) {
+            API.saveArticle({
 
-        API.getArticles()
-            .then(res => 
-                this.setState({ articles: res.data })
-            )
-            .catch(err => console.log(err));
+            })
+        }
     };
 
     render() {
@@ -57,48 +57,35 @@ class Home extends Component {
                         <div className="divider"></div>
                     </div>
                 </div>
-                <div className="row">
+                < div className="row" >
                     <div className="col s10 offset-s1">
                         <div className="card">
                             <div className="search-panel z-depth-4">
                                 <h3 className="search-text center-align card-title">Search</h3>
                                 <div className="search-inputs">
-                                    <div className="input-field">
-                                        <input 
-                                        type="text" 
-                                        id="topic"
-                                        name="topic"
+                                    <Topic 
                                         value={this.state.topic}
                                         onChange={this.handleInputChange}
-                                        />
-                                        <label htmlFor="topic">Topic</label>
-                                    </div>
-                                    <div className="input-field">
-                                        <input 
-                                        type="text" 
-                                        id="start-year"
-                                        name="start-year"
+                                        name="topic"
+                                    />
+                                    <StartYear 
                                         value={this.state.startYear}
-                                        />
-                                        <label htmlFor="start-year">Start Year</label>
-                                    </div>
-                                    <div className="input-field">
-                                        <input 
-                                        type="text" 
-                                        id="end-year"
-                                        name="end-year"
+                                        onChange={this.handleInputChange}
+                                        name="startYear"
+                                    />
+                                    <EndYear
                                         value={this.state.endYear}
-                                        />
-                                        <label htmlFor="end-year">End Year</label>
-                                    </div>
+                                        onChange={this.handleInputChange}
+                                        name="endYear" 
+                                    />
                                     <div className="center">
-                                        <button onClick={this.handleFormSubmit} className="btn waves-efftct search-button"><span className="search-button-text">Search</span></button>
+                                        <button className="btn waves-efftct search-button"><span className="search-button-text">Search</span></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
             </div>
         )
     }

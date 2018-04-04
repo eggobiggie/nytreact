@@ -79,13 +79,3 @@ body {
     font-weight: 700;
     color: #39393A
 }
-
- /* label focus color */
-.input-field input[type=text]:focus + label {
-    color: #39393A !important;
-}
-/* label underline focus color */
-.input-field input[type=text]:focus {
-    border-bottom: 1px solid #39393A !important;
-    box-shadow: 0 1px 0 0 #39393A !important;
-}
