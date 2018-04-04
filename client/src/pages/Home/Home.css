@@ -61,21 +61,3 @@ body {
     padding-right: 30px;
     padding-bottom: 20px;
 }
-
-.search-button:hover {
-    background-color: #fc9f79;
-}
-
-.search-button {
-    background-color: #FF8552;
-}
-
-.search-button:focus {
-    background-color: #FF8552;
-}
-
-.search-button-text {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 700;
-    color: #39393A
-}

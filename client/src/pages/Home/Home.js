@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from "../../utils/API";
 import "./Home.css"
 import { Topic, StartYear, EndYear } from "../../components/Search";
+import SearchBtn from "../../components/SearchBtn";
 
 // Home - contains all of the JSX to be rendered on the homepage. This component may contain other smaller components or JSX that renders plain HTML elements. This component should be able to query the NYT API for articles. It displays the results from the API search in a rendered list that displays the article title, publication date, and allows the user to visit an article's url or save the article to the MongoDB.
 
@@ -78,9 +79,7 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="endYear" 
                                     />
-                                    <div className="center">
-                                        <button className="btn waves-efftct search-button"><span className="search-button-text">Search</span></button>
-                                    </div>
+                                    <SearchBtn />
                                 </div>
                             </div>
                         </div>
