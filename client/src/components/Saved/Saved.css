@@ -1,0 +1,36 @@
+.saved-panel {
+    background-color: #E6E6E6;
+    height: 100%;
+    width: 100%;
+}
+
+.saved-header {
+    font-family: 'Josefin Sans', sans-serif;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    background-color: #297373;
+    /* text-shadow: 2px 2px 2px #FF8552; */
+    width: 100%;
+}
+
+.date-saved {
+    font-family: 'Josefin Sans', sans-serif;
+    padding-left: 35px;
+    padding-bottom: 20px;
+}
+
+.remove-button {
+    background-color: #FF8552;
+    margin-right: 10px;
+}
+
+.remove-button:hover {
+    background-color: #fc9f79;
+}
+
+.remove-button-text {
+    color: #39393A;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}

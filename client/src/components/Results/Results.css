@@ -1,0 +1,40 @@
+.results-header {
+    font-family: 'Josefin Sans', sans-serif;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    background-color: #297373;
+    width: 100%;
+}
+
+.results-panel {
+    background-color: #E6E6E6;
+    height: 100%;
+    width: 100%;
+}
+
+.dummy-headline {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+    margin: 15px;
+}
+
+.save-button {
+    background-color: #FF8552;
+    margin-right: 10px;
+}
+
+.save-button:hover {
+    background-color: #fc9f79;
+}
+
+
+.save-button-text {
+    color: #39393A;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}
