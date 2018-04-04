@@ -23,15 +23,20 @@
     margin: 15px;
 }
 
+.save-button:hover {
+    background-color: #fc9f79;
+    margin-right: 10px;
+}
+
 .save-button {
     background-color: #FF8552;
     margin-right: 10px;
 }
 
-.save-button:hover {
-    background-color: #fc9f79;
+.save-button:focus {
+    background-color: #FF8552;
+    margin-right: 10px;
 }
-
 
 .save-button-text {
     color: #39393A;

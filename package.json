@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/eggobiggie/nytreact/issues"
   },
-  "homepage": "https://github.com/eggobiggie/nytreact#readme"
+  "homepage": "https://github.com/eggobiggie/nytreact#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
 }

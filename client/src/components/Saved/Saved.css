@@ -20,13 +20,19 @@
     padding-bottom: 20px;
 }
 
+.remove-button:hover {
+    background-color: #fc9f79;
+    margin-right: 10px;
+}
+
 .remove-button {
     background-color: #FF8552;
     margin-right: 10px;
 }
 
-.remove-button:hover {
-    background-color: #fc9f79;
+.remove-button:focus {
+    background-color: #FF8552;
+    margin-right: 10px;
 }
 
 .remove-button-text {

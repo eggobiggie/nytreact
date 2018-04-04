@@ -6,15 +6,15 @@ import "./Home.css"
 
 class Home extends Component {
     
-    // state = {
-    //     articles: [],
-    //     title: "",
-    //     date: "",
-    //     url: ""
-    // };
+    state = {
+        articles: [],
+        topic: "",
+        startYear: "",
+        endYear: ""
+    };
 
     // componentDidMount() {
-    //     this.handleInputChange();
+    //     this.loadArticles();
     // }
 
     // loadArticles = () => {
@@ -25,22 +25,22 @@ class Home extends Component {
     //         .catch(err => console.log(err));
     // };
 
-    // handleInputChange = event => {
-    //     const { name, value } = event.target;
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // };
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
 
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
+    handleFormSubmit = event => {
+        event.preventDefault();
 
-    //     API.getArticles()
-    //         .then(res => 
-    //             this.setState({ articles: res.data, title: "", date: "", url:"" })
-    //         )
-    //         .catch(err => console.log(err));
-    // };
+        API.getArticles()
+            .then(res => 
+                this.setState({ articles: res.data })
+            )
+            .catch(err => console.log(err));
+    };
 
     render() {
         return (
@@ -64,16 +64,31 @@ class Home extends Component {
                                 <h3 className="search-text center-align card-title">Search</h3>
                                 <div className="search-inputs">
                                     <div className="input-field">
-                                    {/* if it's a capital letter, it's a custom component */}
-                                        <input type="text" id="topic"/>
+                                        <input 
+                                        type="text" 
+                                        id="topic"
+                                        name="topic"
+                                        value={this.state.topic}
+                                        onChange={this.handleInputChange}
+                                        />
                                         <label htmlFor="topic">Topic</label>
                                     </div>
                                     <div className="input-field">
-                                        <input type="text" id="start-year"/>
+                                        <input 
+                                        type="text" 
+                                        id="start-year"
+                                        name="start-year"
+                                        value={this.state.startYear}
+                                        />
                                         <label htmlFor="start-year">Start Year</label>
                                     </div>
                                     <div className="input-field">
-                                        <input type="text" id="end-year"/>
+                                        <input 
+                                        type="text" 
+                                        id="end-year"
+                                        name="end-year"
+                                        value={this.state.endYear}
+                                        />
                                         <label htmlFor="end-year">End Year</label>
                                     </div>
                                     <div className="center">
