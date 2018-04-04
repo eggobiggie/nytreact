@@ -6,6 +6,7 @@
 .save-button {
     background-color: #FF8552;
     margin-right: 10px;
+    margin-top: -20px;
 }
 
 .save-button:focus {
