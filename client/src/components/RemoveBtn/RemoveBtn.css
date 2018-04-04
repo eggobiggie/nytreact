@@ -6,6 +6,7 @@
 .remove-button {
     background-color: #FF8552;
     margin-right: 10px;
+    margin-top: -50px;
 }
 
 .remove-button:focus {

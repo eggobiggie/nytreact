@@ -1,0 +1,14 @@
+.article-headline {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+    margin: 15px;
+}
+
+.date-saved {
+    font-weight: 400;
+    font-size: 20px;
+}

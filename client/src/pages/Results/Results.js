@@ -21,13 +21,6 @@ class Results extends Component
                             <SaveBtn />
                         </ ResultsListItem>
                     </ ResultsList>
-                    
-                    {/* <div className="dummy-article-panel z-depth-2">
-                        <p className="dummy-headline left-align">Things are great in the world<SaveBtn /></p>
-                    </div>
-                    <div className="dummy-article-panel z-depth-2">
-                        <p className="dummy-headline left-align">Things are great in the world<SaveBtn /></p>
-                    </div> */}
                 </div>
             </div>
         </div>

@@ -1,10 +1,8 @@
 import React from "react";
-import "./ResultsList.css";
+import "./SavedList.css";
 
-export const ResultsList =({ children }) => (
+export const SavedList =({ children }) => (
     <ul className="article-panel z-depth-2">
         { children }
     </ul>
 );
-
-
