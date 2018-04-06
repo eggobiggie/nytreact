@@ -1,5 +1,7 @@
 const db = require("../models");
 
+//use controller to setup db
+
 // Defining methods for Articles
 module.exports = {
   //Find All Articles in DB

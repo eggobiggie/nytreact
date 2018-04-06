@@ -15,17 +15,17 @@ class Home extends Component {
         endYear: ""
     };
 
-    componentDidMount() {
-        this.loadArticles();
-    }
+    // componentDidMount() {
+    //     this.loadArticles();
+    // }
 
-    loadArticles = () => {
-        API.getArticles()
-            .then(res =>
-                this.setState({ articles: res.data, topic: "", startYear: "", endYear: "" })
-            )
-            .catch(err => console.log(err));
-    };
+    // loadArticles = () => {
+    //     API.getArticles()
+    //         .then(res =>
+    //             this.setState({ articles: res.data, topic: "", startYear: "", endYear: "" })
+    //         )
+    //         .catch(err => console.log(err));
+    // };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -36,12 +36,18 @@ class Home extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log("clicked");
         if (this.state.topic && this.state.startYear && this.state.endYear) {
-            API.saveArticle({
-
-            })
+            API.getArticles(this.state.articleSearch)
+                .then(res => {
+                    console.log(res.data);
+                    this.setState({ articles: res.data });
+                })
+                .catch(err => console.log(err));
         }
     };
+
+    //state for search articles and have it update an array with the object of the api information
 
     render() {
         return (
@@ -79,7 +85,10 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="endYear" 
                                     />
-                                    <SearchBtn />
+                                    <SearchBtn
+                                        onClick={this.handleFormSubmit}
+                                        type="submit"
+                                         />
                                 </div>
                             </div>
                         </div>
