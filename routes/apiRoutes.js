@@ -21,15 +21,30 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
     axios.get(searchUrl)
     .then(function(response) {
 
-      //create for loop to go through the responses with this variable so we can pull the details we need
-      let articleArray = response.data.response.docs;
+      //Save response in variable so it's shorter
+      let articleResponse = response.data.response.docs;
+
+      //create empty array to fill with objects of the grabbed information
+      let articleArray = [];
+
+      //loop through data from the nyt
+      for (let i = 0; i < articleResponse.length; i++) {
+      //Push information into the array as objects
+       articleArray.push({
+          title: articleResponse[i].headline.main,
+          pub_date: articleResponse[i].pub_date,
+          url: articleResponse[i].web_url
+       });
+      }
+      console.log(articleArray);
       
-    //   db.Article.create(response.data).then(function (dbArticle) {
-    //     console.log(dbArticle);
-    //   }).catch(function (err) {
-    //     console.log("THE ERROR IS: " + err);
-    //     return res.json(err);
-    //   });
+      //Save information to the database
+      db.Article.create(response.data).then(function (dbArticle) {
+        console.log(dbArticle);
+      }).catch(function (err) {
+        console.log("THE ERROR IS: " + err);
+        return res.json(err);
+      });
       res.json(response.data);
     })
 
