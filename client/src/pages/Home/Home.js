@@ -38,7 +38,7 @@ class Home extends Component {
         event.preventDefault();
         console.log("clicked");
         if (this.state.topic && this.state.startYear && this.state.endYear) {
-            API.searchArticles(this.state.articleSearch)
+            API.searchArticles(this.state.topic, this.state.startYear, this.state.endYear)
                 .then(res => {
                     console.log(res.data);
                     this.setState({ articles: res.data });
