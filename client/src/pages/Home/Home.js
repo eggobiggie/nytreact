@@ -37,15 +37,11 @@ class Home extends Component {
                 .then(res => {
                     console.log(res.data);
                     this.setState({ articles: res.data });
+                    API.fetchArticles();
                 })
                 .catch(err => console.log(err));
-            API.fetchArticles(this.state.articles);
         }
     };
-
-    handleSaveSubmit = event => {
-        API.saveArticles(this.state.articles);
-    }
 
     render() {
         return (
@@ -104,11 +100,11 @@ class Home extends Component {
                                     <ResultsList>
                                         {this.state.articles.map(articles => {
                                             return (
-                                                <ResultsListItem key={articles.title}>
+                                                <ResultsListItem key={articles._id}>
                                                     <p>{articles.title}</p>
                                                     <a href={articles.url} target="_blank">Go To Article</a>
                                                     {/* <p>Published on: {articles.pub_date}</p> */}
-                                                    <SaveBtn onClick={this.handleSaveSubmit}/>
+                                                    <SaveBtn onClick={() => API.saveArticles(articles._id)}/>
                                                 </ResultsListItem>
                                             );
                                         })}

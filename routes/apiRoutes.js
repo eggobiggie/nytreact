@@ -31,24 +31,32 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
           url: articleResponse[i].web_url
        });
       }
-      console.log(articleArray);
+      // console.log(articleArray);
       
       //Save information to the database
       db.Article.create(articleArray).then(function (dbArticle) {
-        console.log(dbArticle);
+        // console.log(dbArticle);
       }).catch(function (err) {
         console.log("THE ERROR IS: " + err);
         return res.json(err);
       });
       res.json(articleArray);
     })
-
     .catch(err => res.status(422).json(err));
 });
 
 router.get("/fetchArticles", (req, res) => {
   findAll({}).then(function (dbArticle) {
     res.json(dbArticle);
+  }).catch(function (err) {
+    res.json(err);
+  });
+});
+
+router.post("/savedArticles", (req, res) => {
+  findById({}).then(function(savedArticle) {
+    db.SavedArticles.save();
+    res.json(savedArticle);
   }).catch(function (err) {
     res.json(err);
   });
