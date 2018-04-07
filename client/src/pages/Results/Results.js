@@ -16,11 +16,11 @@ class Results extends Component
             <div className="col s10 offset-s1">
                 <div className="results-panel z-depth-4 center">
                     <h3 className="results-header center-align">Results</h3>
-                    <ResultsList>
+                    {/* <ResultsList>
                         <ResultsListItem>
                             <SaveBtn />
                         </ ResultsListItem>
-                    </ ResultsList>
+                    </ ResultsList> */}
                 </div>
             </div>
         </div>

@@ -44,8 +44,6 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
     })
 
     .catch(err => res.status(422).json(err));
-    
-    
 });
 
 router.get("/fetchArticles", (req, res) => {

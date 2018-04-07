@@ -19,8 +19,8 @@ class App extends Component {
       // </Router>
       <div>
         <Home />
-        <Results />
-        <Saved />
+        {/* <Results />
+        <Saved /> */}
       </div>
     );
   }
