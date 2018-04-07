@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const router = require("express").Router();
 const db = require('../models');
 
-router.get("/articles", (topic, startYear, endYear) => {
+router.get("/search/:topic/:startYear/:endYear", (req, res) => {
+  
   const apiKey = "d4adf4a8f6034776a1f3fc735080ffc6";
     
     /*
@@ -14,14 +15,19 @@ router.get("/articles", (topic, startYear, endYear) => {
      * &begin_date=19910101
      * &end_date=20181231
      */ 
-    return axios.get(
-      'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' +
-      apiKey + "&q=" + topic + "&begin_date=" + startYear + 
-      "0101&end_date=" + endYear + "1231"
-    );
+    let searchUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' +
+    apiKey + "&q=" + req.params.topic + "&begin_date=" + req.params.startYear + 
+    "0101&end_date=" + req.params.endYear + "1231";
+    console.log(searchUrl);
+    console.log(req.params.topic);
+    // console.log(startYear);
+    // console.log(endYear);
+    return axios.get(searchUrl);
 });
 
 module.exports = router;
+
+'https://api.nytimes.com/svc/search/v2/articlesearch.json\?api-key=d4adf4a8f6034776a1f3fc735080ffc6\&q=Facebook\&begin_date=20140101\&end_date=20181231'
 
 
 // router.get("/articles", (req, res) => {
