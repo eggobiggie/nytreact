@@ -6,7 +6,7 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
-    date: {
+    pub_date: {
         type: String,
         required: true
     },

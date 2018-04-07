@@ -18,16 +18,38 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
     let searchUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' +
     apiKey + "&q=" + req.params.topic + "&begin_date=" + req.params.startYear + 
     "0101&end_date=" + req.params.endYear + "1231";
-    console.log(searchUrl);
-    console.log(req.params.topic);
-    // console.log(startYear);
-    // console.log(endYear);
-    return axios.get(searchUrl);
+    axios.get(searchUrl)
+    .then(function(response) {
+
+      //create for loop to go through the responses with this variable so we can pull the details we need
+      let articleArray = response.data.response.docs;
+      
+    //   db.Article.create(response.data).then(function (dbArticle) {
+    //     console.log(dbArticle);
+    //   }).catch(function (err) {
+    //     console.log("THE ERROR IS: " + err);
+    //     return res.json(err);
+    //   });
+      res.json(response.data);
+    })
+
+    .catch(err => res.status(422).json(err));
+    
+    
+});
+
+
+router.get("/fetchArticles", (req, res) => {
+  // res.send("Test");
+  db.Article.find({}).then(function (dbArticle) {
+    res.json(dbArticle);
+  }).catch(function (err) {
+    res.json(err);
+  });
 });
 
 module.exports = router;
 
-'https://api.nytimes.com/svc/search/v2/articlesearch.json\?api-key=d4adf4a8f6034776a1f3fc735080ffc6\&q=Facebook\&begin_date=20140101\&end_date=20181231'
 
 
 // router.get("/articles", (req, res) => {

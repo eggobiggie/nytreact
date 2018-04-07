@@ -4,7 +4,9 @@ export default {
     //grabs all articles
     searchArticles: function (topic, startYear, endYear) {
         // return axios.get("/api/search", { params: { "topic":topic, "startYear":startYear, "endYear":endYear } });
-        return axios.get("/api/search/"+ topic + "/" + startYear + "/" + endYear);
+        let articles = axios.get("/api/search/"+ topic + "/" + startYear + "/" + endYear);
+        console.log(articles);
+        return articles;
     },
     //saves articles to db
     saveArticles: function (articleData) {
