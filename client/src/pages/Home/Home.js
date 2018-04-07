@@ -43,6 +43,10 @@ class Home extends Component {
         }
     };
 
+    handleSaveSubmit = event => {
+        API.saveArticles(this.state.articles);
+    }
+
     render() {
         return (
             <div className="everything">
@@ -100,11 +104,11 @@ class Home extends Component {
                                     <ResultsList>
                                         {this.state.articles.map(articles => {
                                             return (
-                                                <ResultsListItem key={articles._id}>
+                                                <ResultsListItem key={articles.title}>
                                                     <p>{articles.title}</p>
                                                     <a href={articles.url} target="_blank">Go To Article</a>
                                                     {/* <p>Published on: {articles.pub_date}</p> */}
-                                                    <SaveBtn onClick={() => this.saveArticle(articles._id)}/>
+                                                    <SaveBtn onClick={this.handleSaveSubmit}/>
                                                 </ResultsListItem>
                                             );
                                         })}

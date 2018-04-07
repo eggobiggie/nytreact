@@ -47,7 +47,7 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
 });
 
 router.get("/fetchArticles", (req, res) => {
-  db.Article.find({}).then(function (dbArticle) {
+  findAll({}).then(function (dbArticle) {
     res.json(dbArticle);
   }).catch(function (err) {
     res.json(err);

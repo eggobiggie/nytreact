@@ -12,8 +12,8 @@ export default {
         return axios.get("/fetchArticles");
     },
     //saves articles to db
-    saveArticles: function (articleData) {
-        return axios.post("/api/articles" + articleData);
+    saveArticles: function (id) {
+        return axios.post("/api/articles" + id);
     },
     // //delete article via given id
     deleteArticles: function(id) {
