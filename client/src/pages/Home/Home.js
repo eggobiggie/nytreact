@@ -36,10 +36,10 @@ class Home extends Component {
             API.searchArticles(this.state.topic, this.state.startYear, this.state.endYear)
                 .then(res => {
                     API.fetchArticles()
-                .then(res => {
-                    this.setState({ articles: res.data });
-                })
-                .catch(err => console.log(err));
+                        .then(res => {
+                            this.setState({ articles: res.data });
+                        })
+                        .catch(err => console.log(err));
                 })
                 .catch(err => console.log(err));
         }
@@ -92,13 +92,13 @@ class Home extends Component {
                         </div>
                     </div >
                 </div>
-                {!this.state.articles ? (
-                    <h1>No Articles Found</h1>
-                ) : (
-                        <div className="row">
-                            <div className="col s10 offset-s1">
-                                <div className="results-panel z-depth-4 center">
-                                    <h3 className="results-header center-align">Results</h3>
+                <div className="row">
+                    <div className="col s10 offset-s1">
+                        <div className="results-panel z-depth-4 center">
+                            <h3 className="results-header center-align">Results</h3>
+                            {!this.state.articles ? (
+                                <h1>No Articles Found</h1>
+                            ) : (
                                     <ResultsList>
                                         {this.state.articles.map(articles => {
                                             return (
@@ -111,10 +111,10 @@ class Home extends Component {
                                             );
                                         })}
                                     </ResultsList>
-                                </div>
-                            </div>
+                                )}
                         </div>
-                    )}
+                    </div>
+                </div>
             </div>
         );
     }

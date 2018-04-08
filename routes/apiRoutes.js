@@ -9,7 +9,7 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
   //Drop collection so it can be refreshed per search
   mongoose.connection.db.dropCollection("articles");
 
-  // mongoose.connection.db.createCollection("articles");
+  mongoose.connection.db.createCollection("articles");
   
   const apiKey = "d4adf4a8f6034776a1f3fc735080ffc6";
     
@@ -34,11 +34,9 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
           url: articleResponse[i].web_url
        });
       }
-      // console.log(articleArray);
       
       //Save information to the database
       db.Article.create(articleArray).then(function (dbArticle) {
-        // console.log(dbArticle);
       }).catch(function (err) {
         console.log("THE ERROR IS: " + err);
         return res.json(err);
@@ -48,11 +46,8 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
     .catch(err => res.status(422).json(err));
 });
 
+//Fetch articles from database
 router.get("/fetchArticles", (req, res) => {
-  // let fetch = articleController.findAll;
-  // console.log("fetch isn't gonna happen ");
-  // console.log(articleController.findAll());
-  // res.json(fetch);
   db.Article.find({}).then(function(dbArticle) {
     res.json(dbArticle);
   })
@@ -61,30 +56,26 @@ router.get("/fetchArticles", (req, res) => {
   });
 });
 
+//Save article to collection per id
 router.get("/savedArticles/:id", (req, res) => {
-  console.log("apiroutes")
+  //grab article id on click of save button
   db.Article.findById(req.params.id)
     .then(savedArticle => {
-      console.log(savedArticle)
-      // db.SavedArticle.save(savedArticle);
-      // res.json(savedArticle);
-      console.log("not actually saving article, just the one below:")
-      let articleToSave = new db.SavedArticle({ _id: savedArticle.id,
+      //create new article object using saved article schema
+      let articleToSave = new db.SavedArticle({ 
+        _id: savedArticle.id,
         title: savedArticle.title,
         pub_date: savedArticle.pub_date,
         url: savedArticle.url
       })
-      console.log(articleToSave);
+      //Save new article object to saved collection
       articleToSave.save(err => {
         if (err) return res.status(569).send(err);
-        console.log("fired articleToSave.save as expected")
         return res.send(savedArticle);
       });
     }).catch(function (err) {
       res.json(err);
     });
-  
-
   });
   // findById({}).then(function(savedArticle) {
   //   db.SavedArticles.save();
