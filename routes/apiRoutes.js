@@ -7,6 +7,8 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
 
   //Drop collection so it can be refreshed per search
   mongoose.connection.db.dropCollection("articles");
+
+  mongoose.connection.db.createCollection("articles");
   
   const apiKey = "d4adf4a8f6034776a1f3fc735080ffc6";
     

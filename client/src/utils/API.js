@@ -9,11 +9,11 @@ export default {
         return articles;
     },
     fetchArticles: function(req, res) {
-        return axios.get("/fetchArticles");
+        return axios.get("/api/fetchArticles");
     },
     //saves articles to db
     saveArticles: function (id) {
-        return axios.post("/savedArticles/" + id);
+        return axios.post("/api/savedArticles/" + id);
     },
     // //delete article via given id
     deleteArticles: function(id) {
