@@ -40,9 +40,6 @@ class Home extends Component {
                     this.setState({ articles: res.data });
                 })
                 .catch(err => console.log(err));
-                    // console.log(res.data);
-                    // this.setState({ articles: res.data });
-                    // API.fetchArticles();
                 })
                 .catch(err => console.log(err));
         }

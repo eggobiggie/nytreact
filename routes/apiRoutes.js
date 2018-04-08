@@ -61,14 +61,38 @@ router.get("/fetchArticles", (req, res) => {
   });
 });
 
-router.post("/savedArticles", (req, res) => {
-  findById({}).then(function(savedArticle) {
-    db.SavedArticles.save();
-    res.json(savedArticle);
-  }).catch(function (err) {
-    res.json(err);
+router.get("/savedArticles/:id", (req, res) => {
+  console.log("apiroutes")
+  db.Article.findById(req.params.id)
+    .then(savedArticle => {
+      console.log(savedArticle)
+      // db.SavedArticle.save(savedArticle);
+      // res.json(savedArticle);
+      console.log("not actually saving article, just the one below:")
+      let articleToSave = new db.SavedArticle({ _id: savedArticle.id,
+        title: savedArticle.title,
+        pub_date: savedArticle.pub_date,
+        url: savedArticle.url
+      })
+      console.log(articleToSave);
+      articleToSave.save(err => {
+        if (err) return res.status(569).send(err);
+        console.log("fired articleToSave.save as expected")
+        return res.send(savedArticle);
+      });
+    }).catch(function (err) {
+      res.json(err);
+    });
+  
+
   });
-});
+  // findById({}).then(function(savedArticle) {
+  //   db.SavedArticles.save();
+  //   res.json(savedArticle);
+  // }).catch(function (err) {
+  //   res.json(err);
+  // });
+// });
 
 module.exports = router;
 
