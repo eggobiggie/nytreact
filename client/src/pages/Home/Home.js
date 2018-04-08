@@ -35,9 +35,14 @@ class Home extends Component {
         if (this.state.topic && this.state.startYear && this.state.endYear) {
             API.searchArticles(this.state.topic, this.state.startYear, this.state.endYear)
                 .then(res => {
-                    console.log(res.data);
+                    API.fetchArticles()
+                .then(res => {
                     this.setState({ articles: res.data });
-                    API.fetchArticles();
+                })
+                .catch(err => console.log(err));
+                    // console.log(res.data);
+                    // this.setState({ articles: res.data });
+                    // API.fetchArticles();
                 })
                 .catch(err => console.log(err));
         }
@@ -104,7 +109,7 @@ class Home extends Component {
                                                     <p>{articles.title}</p>
                                                     <a href={articles.url} target="_blank">Go To Article</a>
                                                     {/* <p>Published on: {articles.pub_date}</p> */}
-                                                    <SaveBtn onClick={() => API.saveArticles(articles._id)}/>
+                                                    <SaveBtn onClick={() => API.saveArticles(articles._id)} />
                                                 </ResultsListItem>
                                             );
                                         })}

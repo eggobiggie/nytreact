@@ -2,13 +2,14 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const router = require("express").Router();
 const db = require('../models');
+const articleController = require("../controllers/articleController");
 
 router.get("/search/:topic/:startYear/:endYear", (req, res) => {
 
   //Drop collection so it can be refreshed per search
   mongoose.connection.db.dropCollection("articles");
 
-  mongoose.connection.db.createCollection("articles");
+  // mongoose.connection.db.createCollection("articles");
   
   const apiKey = "d4adf4a8f6034776a1f3fc735080ffc6";
     
@@ -48,9 +49,14 @@ router.get("/search/:topic/:startYear/:endYear", (req, res) => {
 });
 
 router.get("/fetchArticles", (req, res) => {
-  findAll({}).then(function (dbArticle) {
+  // let fetch = articleController.findAll;
+  // console.log("fetch isn't gonna happen ");
+  // console.log(articleController.findAll());
+  // res.json(fetch);
+  db.Article.find({}).then(function(dbArticle) {
     res.json(dbArticle);
-  }).catch(function (err) {
+  })
+  .catch(function (err) {
     res.json(err);
   });
 });

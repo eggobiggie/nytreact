@@ -1,4 +1,5 @@
 const db = require("../models");
+const mongoose = require("mongoose");
 
 //use controller to setup db
 
@@ -7,9 +8,13 @@ module.exports = {
   //Find All Articles in DB
   findAll: function(req, res) {
     db.Article
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
+      .find(req)
+      .then(dbArticle =>  {
+        // console.log(dbArticle);
+        console.log("found articles")
+        res.json(dbArticle);
+        // return dbArticle;
+      })
       .catch(err => res.status(422).json(err));
   },
   //Find Article by ID in DB
