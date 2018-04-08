@@ -77,13 +77,19 @@ router.get("/savedArticles/:id", (req, res) => {
       res.json(err);
     });
   });
-  // findById({}).then(function(savedArticle) {
-  //   db.SavedArticles.save();
-  //   res.json(savedArticle);
-  // }).catch(function (err) {
-  //   res.json(err);
-  // });
-// });
+
+
+  router.get("/fetchSavedArticles", (req, res) => {
+    console.log("fetchsaved");
+    db.SavedArticle.find({})
+      .then(function (dbSavedArticle) {
+        res.json(dbSavedArticle);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  });
+
 
 module.exports = router;
 

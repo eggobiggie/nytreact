@@ -13,8 +13,12 @@ export default {
     },
     //saves articles to db
     saveArticles: function (id) {
-        console.log("api.savearticles");
+        console.log("saving")
         return axios.get("/api/savedArticles/" + id);
+    },
+    fetchSavedArticles: function () {
+        console.log("fetchsavedapi")
+        return axios.get("/api/fetchSavedArticles/");
     },
     // //delete article via given id
     deleteArticles: function(id) {
