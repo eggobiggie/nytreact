@@ -5,6 +5,7 @@ import { Topic, StartYear, EndYear } from "../../components/Search";
 import SearchBtn from "../../components/SearchBtn";
 import SaveBtn from "../../components/SaveBtn";
 import { ResultsListItem, ResultsList } from "../../components/ResultsList";
+import Saved from "../Saved";
 
 class Home extends Component {
 
@@ -107,7 +108,9 @@ class Home extends Component {
                                                     <p className="articles-headline">{articles.title}</p>
                                                     {/* <p className="article-date">Published on: {articles.pub_date}</p> */}
                                                     <a className="articles-url" href={articles.url} target="_blank">Go To Article</a>
-                                                    <SaveBtn onClick={() => API.saveArticles(articles._id)} />
+                                                    <SaveBtn onClick={() => API.saveArticles(articles._id)} 
+                                                    // Need to run load articles somehow so that they reload when the save happens
+                                                      />
                                                 </ResultsListItem>
                                             );
                                         })}
