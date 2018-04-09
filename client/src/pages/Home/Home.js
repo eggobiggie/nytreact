@@ -4,9 +4,7 @@ import "./Home.css"
 import { Topic, StartYear, EndYear } from "../../components/Search";
 import SearchBtn from "../../components/SearchBtn";
 import SaveBtn from "../../components/SaveBtn";
-import Saved from "../../pages/Saved";
 import { ResultsListItem, ResultsList } from "../../components/ResultsList";
-import { SavedListItem, SavedList } from "../../components/SavedList";
 
 class Home extends Component {
 
