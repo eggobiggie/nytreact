@@ -55,7 +55,7 @@ class Home extends Component {
                     <div className="col s12">
                         <div className="divider-panel">
                             <div className="divider"></div>
-                            <div className="divider-text center-align">Search for and annotate articles from the internet</div>
+                            <div className="divider-text center-align">Search for and save articles from the internet</div>
                             <div className="divider"></div>
                         </div>
                     </div>
@@ -107,8 +107,8 @@ class Home extends Component {
                                             return (
                                                 <ResultsListItem key={articles._id}>
                                                     <p className="articles-headline">{articles.title}</p>
+                                                    {/* <p className="article-date">Published on: {articles.pub_date}</p> */}
                                                     <a className="articles-url" href={articles.url} target="_blank">Go To Article</a>
-                                                    {/* <p>Published on: {articles.pub_date}</p> */}
                                                     <SaveBtn onClick={() => API.saveArticles(articles._id)} />
                                                 </ResultsListItem>
                                             );

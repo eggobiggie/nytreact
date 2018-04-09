@@ -36,6 +36,7 @@ class Saved extends Component {
                                     
                                     <SavedListItem key={savedArticles._id}>
                                         <p className="saved-headline">{savedArticles.title}</p>
+                                        {/* <p className="saved-date">Published on: {savedArticles.pub_date}</p> */}
                                         <a className="saved-url" href={savedArticles.url} target="_blank">Go To Article</a>
                                         <RemoveBtn onClick={() => 
                                             {
