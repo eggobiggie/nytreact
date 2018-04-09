@@ -5,13 +5,14 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const apiRoutes = require("./routes/apiRoutes");
+const MONGODB_URI = require("./config/keys");
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytreactdb";
+// var MONGODB_URI = MONGODB_URI || "mongodb://localhost/nytreactdb";
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {

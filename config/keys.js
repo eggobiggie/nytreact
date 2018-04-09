@@ -1,0 +1,1 @@
+module.exports = "NYT_Scrubber:Dvg9EJl2R5rK@ds239359.mlab.com:39359/heroku_0w5r4fr2"
