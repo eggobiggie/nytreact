@@ -76,3 +76,12 @@ body {
     height: 100%;
     width: 100%;
 }
+
+.articles-headline {
+    padding: 10px;
+}
+
+.articles-url {
+    padding: 10px;
+    font-weight: 400;
+}

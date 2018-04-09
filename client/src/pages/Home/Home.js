@@ -8,8 +8,6 @@ import Saved from "../../pages/Saved";
 import { ResultsListItem, ResultsList } from "../../components/ResultsList";
 import { SavedListItem, SavedList } from "../../components/SavedList";
 
-// Home - contains all of the JSX to be rendered on the homepage. This component may contain other smaller components or JSX that renders plain HTML elements. This component should be able to query the NYT API for articles. It displays the results from the API search in a rendered list that displays the article title, publication date, and allows the user to visit an article's url or save the article to the MongoDB.
-
 class Home extends Component {
 
     //create states for search parameters
@@ -45,16 +43,6 @@ class Home extends Component {
         }
     };
 
-    // componentDidMount() {
-    //     this.loadSavedArticles();
-    //   }
-
-    // loadSavedArticles = () => {
-    //     API.fetchSavedArticles()
-    //         .then(res => this.setState({ savedArticles: res.data }))
-    //         .catch(err => console.log(err));
-    // };
-
     render() {
         return (
             <div className="everything">
@@ -77,6 +65,7 @@ class Home extends Component {
                                 <div className="search-panel z-depth-4">
                                     <h3 className="search-text center-align card-title">Search</h3>
                                     <div className="search-inputs">
+                                    {/* grab input from user */}
                                         <Topic
                                             value={this.state.topic}
                                             onChange={this.handleInputChange}
@@ -92,6 +81,7 @@ class Home extends Component {
                                             onChange={this.handleInputChange}
                                             name="endYear"
                                         />
+                                        {/* run search on submit and add to db */}
                                         <SearchBtn
                                             onClick={this.handleFormSubmit}
                                             type="submit"
@@ -106,24 +96,20 @@ class Home extends Component {
                     <div className="col s10 offset-s1">
                         <div className="results-panel z-depth-4 center">
                             <h3 className="results-header center-align">Results</h3>
+                            {/* //if there are articles from search and db, then display */}
                             {!this.state.articles ? (
+                                // if there are no articles found
                                 <h1>No Articles Found</h1>
                             ) : (
+                                //display results on screen in list
                                     <ResultsList>
                                         {this.state.articles.map(articles => {
                                             return (
                                                 <ResultsListItem key={articles._id}>
-                                                    <p>{articles.title}</p>
-                                                    <a href={articles.url} target="_blank">Go To Article</a>
+                                                    <p className="articles-headline">{articles.title}</p>
+                                                    <a className="articles-url" href={articles.url} target="_blank">Go To Article</a>
                                                     {/* <p>Published on: {articles.pub_date}</p> */}
-                                                    <SaveBtn onClick={() => API.saveArticles(articles._id)
-                                                        //     .then(res => {
-                                                        //         API.fetchSavedArticles().then(res => {
-                                                        //         this.setState({ savedArticles: res.data })
-                                                        //         console.log(this.state.savedArticles)
-                                                        //     })
-                                                        //     }).catch(err => console.log(err))
-                                                    } />
+                                                    <SaveBtn onClick={() => API.saveArticles(articles._id)} />
                                                 </ResultsListItem>
                                             );
                                         })}
@@ -132,29 +118,6 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <div className="row">
-                    <div className="col s10 offset-s1">
-                        <div className="saved-panel z-depth-4 center">
-                            <h3 className="saved-header center-align">Saved Articles</h3>
-                            {this.state.savedArticles ? (
-                                <SavedList>
-                                    {this.state.savedArticles.map(savedArticles => {
-                                        return (
-
-                                            <SavedListItem key={savedArticles._id}>
-                                                <p>{savedArticles.title}</p>
-                                                <a href={savedArticles.url} target="_blank">Go To Article</a>
-                                            </SavedListItem>
-
-                                        )
-                                    })}
-                                </SavedList>
-                            ) : (
-                                    <p>No Results to Display</p>
-                                )}
-                        </div>
-                    </div>
-                </div> */}
             </div>
         );
     }

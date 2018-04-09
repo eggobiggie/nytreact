@@ -10,10 +10,17 @@
     padding-bottom: 5px;
     font-weight: bold;
     background-color: #297373;
-    /* text-shadow: 2px 2px 2px #FF8552; */
     width: 100%;
 }
 
+.saved-headline {
+    padding: 10px;
+}
+
+.saved-url {
+    padding: 10px;
+    font-weight: 400;
+}
 .date-saved {
     font-family: 'Josefin Sans', sans-serif;
     padding-left: 35px;

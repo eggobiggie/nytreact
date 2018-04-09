@@ -78,9 +78,8 @@ router.get("/savedArticles/:id", (req, res) => {
     });
   });
 
-
+//fetch saved articles from db for display
   router.get("/fetchSavedArticles", (req, res) => {
-    console.log("fetchsaved");
     db.SavedArticle.find({})
       .then(function (dbSavedArticle) {
         res.json(dbSavedArticle);
@@ -88,6 +87,15 @@ router.get("/savedArticles/:id", (req, res) => {
       .catch(function (err) {
         res.json(err);
       });
+  });
+
+  //delete saved article
+  router.delete("/deleteArticle/:id", (req, res) => {
+    console.log("delete route");
+    db.SavedArticle.findById(req.params.id)
+    .then(deleteArticle => deleteArticle.remove())
+    .then(deleteArticle => res.json(deleteArticle))
+    .catch(err => res.json(err))
   });
 
 
