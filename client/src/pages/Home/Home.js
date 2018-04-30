@@ -7,7 +7,7 @@ import SaveBtn from "../../components/SaveBtn";
 import { ResultsListItem, ResultsList } from "../../components/ResultsList";
 import Saved from "../Saved";
 
-class Home extends Component {
+export default class Home extends React.Component {
 
     //create states for search parameters
     state = {
@@ -108,9 +108,9 @@ class Home extends Component {
                                                     <p className="articles-headline">{articles.title}</p>
                                                     {/* <p className="article-date">Published on: {articles.pub_date}</p> */}
                                                     <a className="articles-url" href={articles.url} target="_blank">Go To Article</a>
-                                                    <SaveBtn onClick={() => API.saveArticles(articles._id)} 
-                                                    // Need to run load articles somehow so that they reload when the save happens
-                                                      />
+                                                    <SaveBtn onClick={() => API.saveArticles(articles._id)
+                                                    }/>
+                                                    {/* // Need to run load articles somehow so that they reload when the save happens */}  
                                                 </ResultsListItem>
                                             );
                                         })}
@@ -119,9 +119,10 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
+               <Saved savedArticles={this.state.savedArticles} />
             </div>
         );
     }
 }
 
-export default Home;
+// export default Home;

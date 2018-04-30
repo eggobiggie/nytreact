@@ -10,5 +10,4 @@ export const Topic = props => (
         />
         <label htmlFor="topic">Topic</label>
     </div>
-
 );
